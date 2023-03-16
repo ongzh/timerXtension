@@ -16,8 +16,8 @@
       "32": "icon.png"
     },
 
-    "default_title": "timerXtenstion Action Title",
-    "default_popup": "popup.html"
+    "default_title": "Focus Timer",
+    "default_popup": "popup/popup.html"
   },
   "options_page":"options.html",
   "permissions":["storage", "alarms", "notifications"],

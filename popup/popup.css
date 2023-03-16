@@ -1,0 +1,14 @@
+body{
+    width: 400px;
+    height: 400px;
+}
+
+h1{
+    color: blue 
+}
+
+.header{
+    display:flex;
+    justify-content: center;
+    height: 40px;
+}

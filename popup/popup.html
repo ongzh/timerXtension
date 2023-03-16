@@ -8,13 +8,21 @@
     <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
-    <h1>Timer Extension</h1> 
+    <div class="header">
+        <img src="../icon.png"/>
+    </div>
+    <h1>00:00</h1> 
     <h2 id="time"></h2>
     <h2 id="name"></h2>
     <h2 id="timer"></h2>
-    <button id="start">Start Timer</button>
-    <button id="stop">Stop Timer</button>
-    <button id="reset">Reset Timer</button>
+    <button id="start-btn">Start Timer</button>
+    <button id="stop-btn">Stop Timer</button>
+    <button id="reset-btn">Reset Timer</button>
+    <div>
+    <button id="add-task-btn">Add Task</button>
+    <div id="task-container">
+    </div>
+    </div>
 </body>
 <script src="popup.js"></script>
 </html>
