@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Timer Extenstion",
+  "name": "timerXtenstion",
   "version": "1.0.0",
   "description": "Hello Chrome World!",
   "icons": {
@@ -16,11 +16,11 @@
       "32": "icon.png"
     },
 
-    "default_title": "Timer Extension Action Title",
+    "default_title": "timerXtenstion Action Title",
     "default_popup": "popup.html"
   },
   "options_page":"options.html",
-  "permissions":["storage", "alarms"],
+  "permissions":["storage", "alarms", "notifications"],
   "background": {
      "service_worker": "background.js"
   }
