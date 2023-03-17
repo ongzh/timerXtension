@@ -1,5 +1,5 @@
 const saveBtn = document.getElementById("save-btn")
-const timeOption = document.getElementById("pomodoro-input")
+const timeOption = document.getElementById("timer-input")
 
 timeOption.addEventListener("change", (event)=>{
   const val = event.target.value
@@ -9,7 +9,7 @@ timeOption.addEventListener("change", (event)=>{
 })
 
 
-saveBtn.addEventListener("click", () => {s
+saveBtn.addEventListener("click", () => {
     chrome.storage.local.set({
       timer: 0,
       timeOption: timeOption.value,
