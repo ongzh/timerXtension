@@ -1,17 +1,26 @@
-
 const curTimeElement = document.getElementById("cur-time")
-const nameElement = document.getElementById("name")
 
 
 function updateTimeElements(){
-    chrome.storage.local.get(["timer", "timeOption"], (res)=>{
+    chrome.storage.local.get(["timer", "timeOption", "restOption", "isResting"], (res)=>{
         const timerElement = document.getElementById("timer")
-        const minutes = `${res.timeOption - Math.ceil(res.timer / 60)}`.padStart(2,"0")
+        const resterElement = document.getElementById("rest-timer")
+        
+        let option = res.isResting ? res.restOption : res.timeOption
+
+        const minutes = `${option - Math.ceil(res.timer / 60)}`.padStart(2,"0")
         let seconds = "00"
         if (res.timer % 60 != 0){
             seconds = `${60 - res.timer % 60}`.padStart(2,"0")
         }
-        timerElement.textContent = `${minutes}:${seconds}`
+        
+        if (res.isResting){
+            resterElement.textContent = `${minutes}:${seconds}`
+        }
+        else{
+            timerElement.textContent = `${minutes}:${seconds}`
+            resterElement.textContent = `${res.restOption}`.padStart(2,"0") +":00"
+        }
     })
     const currentTime = new Date().toLocaleTimeString()
     curTimeElement.textContent = `Current Time: ${currentTime}`
@@ -43,7 +52,8 @@ startBtn.addEventListener("click", ()=>{
 resetBtn.addEventListener("click", ()=>{
     chrome.storage.local.set({
         timer: 0,
-        isRunning:false,   
+        isRunning:false,
+        isResting: false,   
     }, ()=>{
         startBtn.textContent = "Start Timer"
     })

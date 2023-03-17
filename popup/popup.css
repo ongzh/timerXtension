@@ -7,6 +7,11 @@ body{
     margin: 0px 
 }
 
+#timer-container{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
 
 #timer{
     color: darkgreen;
@@ -14,6 +19,12 @@ body{
     font-size: 45px;
     margin: 10px;
 
+}
+#rest-timer{
+    color: red;
+    align-self: baseline;
+    font-size: 20px;
+    
 }
 
 .header{
