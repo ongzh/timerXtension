@@ -1,4 +1,5 @@
-const timeElement = document.getElementById("time")
+
+const curTimeElement = document.getElementById("cur-time")
 const nameElement = document.getElementById("name")
 
 
@@ -13,7 +14,7 @@ function updateTimeElements(){
         timerElement.textContent = `${minutes}:${seconds}`
     })
     const currentTime = new Date().toLocaleTimeString()
-    timeElement.textContent = `The time is: ${currentTime}`
+    curTimeElement.textContent = `Current Time: ${currentTime}`
 }
 
 updateTimeElements()
@@ -21,16 +22,8 @@ setInterval(updateTimeElements, 1000)
 
 
 const currentTime = new Date().toLocaleTimeString()
-timeElement.textContent = `The time is: ${currentTime}`;
-/*
-chrome.action.setBadgeText({
-    text: "TIME",
-}, ()=>{console.log("Finished setting bade text.")})
-*/
-chrome.storage.sync.get(["name"], (res)=>{
-    const name = res.name ?? "???"
-    nameElement.textContent = `Your name is ${name}`
-})
+curTimeElement.textContent = `Current Time: ${currentTime}`;
+
 
 const startBtn = document.getElementById("start-btn")
 const resetBtn = document.getElementById("reset-btn")
@@ -80,6 +73,7 @@ function renderTask(taskNum){
     text.type = "text"
     text.placeholder = "Enter a task..."
     text.value = tasks[taskNum]
+    text.className = "task-input-text"
     text.addEventListener("change", ()=>{
         tasks[taskNum] = text.value
         saveTasks()
@@ -89,6 +83,7 @@ function renderTask(taskNum){
     const deleteBtn = document.createElement("input")
     deleteBtn.type = "button"
     deleteBtn.value = "X"
+    deleteBtn.className = "task-delete-btn"
     deleteBtn.addEventListener("click", ()=>{
         deleteTask(taskNum)
     })

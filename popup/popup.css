@@ -1,14 +1,83 @@
 body{
     width: 400px;
-    height: 400px;
+    height: 550px;
+    padding: 8px;
+    background-color: antiquewhite;
+    border: 1px solid black;
+    margin: 0px 
 }
 
-h1{
-    color: blue 
+
+#timer{
+    color: darkgreen;
+    text-align: center;
+    font-size: 45px;
+    margin: 10px;
+
 }
 
 .header{
     display:flex;
     justify-content: center;
-    height: 40px;
+    height: 45px;
+    padding-top: 5px;
+}
+
+#cur-time{
+    font-weight: normal;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    
+}
+
+#btn-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#btn-container > button{
+    color: indianred;
+    background-color: antiquewhite;
+    border-style: solid;
+    outline: none;
+    border-radius: 5px;
+    border-color: indianred;
+    padding: 8px;
+    font-weight: bold;
+    width: 100px;
+    cursor: pointer;
+
+}
+
+
+#task-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.task-input-text {
+    outline: none;
+    border-style: solid;
+    border-radius: 3.5px;
+    margin: 5px;
+    padding: 5px 10px 5px 10px;
+    width: 250px;
+    background-color: antiquewhite;
+    border-color: darkgreen;
+}
+
+
+.task-delete-btn {
+    border-style: solid;
+    outline: none;
+    size: 25px;
+    border-radius: 3.5px;
+    color: indianred;
+    border-color: indianred;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: antiquewhite;
 }
