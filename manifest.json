@@ -19,7 +19,7 @@
     "default_title": "Focus Timer",
     "default_popup": "popup/popup.html"
   },
-  "options_page":"options.html",
+  "options_page":"options/options.html",
   "permissions":["storage", "alarms", "notifications"],
   "background": {
      "service_worker": "background.js"
