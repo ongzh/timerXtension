@@ -31,11 +31,16 @@ chrome.alarms.onAlarm.addListener((alarm)=>{
                     isRunning = false
                     isResting = false 
                 }
+                chrome.storage.local.set({
+                    timer,
+                    isResting,
+                })
             }
             
             if (res.isRunning) {
                 let timer = res.timer + 1
                 let isRunning = true
+                let isResting = false
                 if (timer == 60 * res.timeOption){
                     this.registration.showNotification("Pomodoro Timer",
                     {
@@ -51,15 +56,15 @@ chrome.alarms.onAlarm.addListener((alarm)=>{
                 chrome.storage.local.set({
                     timer,
                     isRunning,
-                    isResting: res.isResting,
+                    isResting,
                 })
                 chrome.action.setBadgeText({
-                    text: `${timer}`
+                    text: "G"
                 })
             }
             else {
             chrome.action.setBadgeText({
-                text: `${res.timer}`
+                text: "REST"
                 })
             return 
             }
