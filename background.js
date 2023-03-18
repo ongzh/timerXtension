@@ -1,34 +1,49 @@
-chrome.alarms.create({
+chrome.alarms.create("pomodoroTimer", {
     periodInMinutes: 1 / 60,
 })
 
-chrome.alarms.onAlarm.addListener((alarm)=>{
-   chrome.storage.local.get(["timer", "isRunning"], (res)=>{
-    const time = res.timer ?? 0
-    const isRunning = res.isRunning ?? true
-    if (!isRunning){
-        chrome.action.setBadgeText({
-            text: `${time}`
-        })
-        return 
-    }
+chrome.storage.local.get(["timer", "isRunning", "timeOption"], (res)=>{
     chrome.storage.local.set({
-        timer: time+1,
-    })
-    chrome.action.setBadgeText({
-        text: `${time+1}`
-    })
-    chrome.storage.sync.get(['notificationTime'], (res)=>{
-        const notificationTime = res.notificationTime ?? 1000
-        if (time % notificationTime == 0){
-            this.registration.showNotification("Chrome Timer Extension"
-            , {
-                body: `${notificationTime} seconds has passed!`,
-                icon: "icon.png"
-            })
-            }
+        timer:"timer" in res ? res.timer:0,
+        isRunning: "isRunning" in res ? res.isRunning: false,
+        timeOption: "timeOption" in res ? res.timeOption : 25 
     })
 })
+
+
+chrome.alarms.onAlarm.addListener((alarm)=>{
+    if (alarm.name === "pomodoroTimer"){
+        chrome.storage.local.get(["timer", "isRunning"], (res)=>{
+            if (res.isRunning) {
+                let timer = res.timer + 1
+                let isRunning = true
+                if (timer == 60 * res.timeOption){
+                    this.registration.showNotification("Pomodoro Timer",
+                    {
+                        body: `${res.timeOption} minutes has passed!`,
+                        icon: "icon.png"
+                    })
+                    timer = 0
+                    isRunning = false 
+                }
+                chrome.storage.local.set({
+                    timer,
+                    isRunning
+                })
+                chrome.action.setBadgeText({
+                    text: `${timer}`
+                })
+            }
+            else {
+            chrome.action.setBadgeText({
+                text: `${res.timer}`
+                })
+            return 
+            }
+        
+        })
+    }
+    
 })
 
 console.log(this)
