@@ -102,8 +102,17 @@ function renderTask(taskNum){
         deleteTask(taskNum)
     })
 
+    const completeBtn = document.createElement("input")
+    completeBtn.type = "button"
+    completeBtn.value = "O"
+    completeBtn.className = "task-complete-btn"
+    completeBtn.addEventListener("click", ()=>{
+        completeTask(taskNum)
+    })
+
     taskRow.appendChild(text)
     taskRow.appendChild(deleteBtn)
+    taskRow.append(completeBtn)
 
     const taskContainer = document.getElementById("task-container")
     taskContainer.appendChild(taskRow)
@@ -125,6 +134,14 @@ function deleteTask(taskNum){
     saveTasks()
 }
 
+function completeTask(taskNum){
+    tasks.splice(taskNum,1 )
+    renderTasks()
+    saveTasks()
+    addCompletedTask()
+
+}
+
 function renderTasks(){
     const taskContainer = document.getElementById("task-container")
     taskContainer.textContent = ""
@@ -132,3 +149,41 @@ function renderTasks(){
         renderTask(taskNum)
     })
 }
+
+
+
+let taskCount = 0
+const taskCompleted = document.getElementById("cur-task-completed")
+chrome.storage.sync.get(["taskCount"], (res)=>{
+    taskCount = res.taskCount ? res.taskCount : 0
+    renderCompletedTaskCount(taskCount)
+})
+
+function renderCompletedTaskCount(taskCount){
+    taskCompleted.textContent = `Tasks completed: ${taskCount}` 
+
+}
+
+function addCompletedTask(){
+    chrome.storage.sync.get(["taskCount"], (res)=>{
+        const taskCount = res.taskCount ? res.taskCount +1 : 1
+        chrome.storage.sync.set({
+            taskCount: taskCount ,
+        },()=>{
+            console.log(taskCount)
+            renderCompletedTaskCount(taskCount)
+        })
+
+    }) 
+}
+
+const resetTaskBtn = document.getElementById("reset-task-btn")
+resetTaskBtn.addEventListener("click", ()=>{
+    chrome.storage.sync.set({
+        taskCount: taskCount,
+    },()=>{
+        renderCompletedTaskCount(0)
+    })
+}
+)
+
