@@ -15,13 +15,9 @@ function updateTimeElements(){
         }
         
         if (res.isResting){
-            console.log(res.isResting)
-            console.log(option)
-            console.log(res.timer)
             resterElement.textContent = `${minutes}:${seconds}`
         }
         else{
-            console.log("not resting")
             timerElement.textContent = `${minutes}:${seconds}`
             resterElement.textContent = `${res.restOption}`.padStart(2,"0") +":00"
         }

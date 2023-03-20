@@ -58,8 +58,13 @@ chrome.alarms.onAlarm.addListener((alarm)=>{
                     isRunning,
                     isResting,
                 })
+                const minutes = `${res.timeOption - Math.ceil(res.timer / 60)}`.padStart(2,"0")
+                let seconds = "00"
+                if (res.timer % 60 != 0){
+                    seconds = `${60 - res.timer % 60}`.padStart(2,"0")
+                }
                 chrome.action.setBadgeText({
-                    text: "G"
+                    text: `${minutes}:${seconds}`
                 })
             }
             else {
