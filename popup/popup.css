@@ -34,13 +34,6 @@ body{
     padding-top: 5px;
 }
 
-#cur-time{
-    font-weight: normal;
-    font-size: 12px;
-    position: fixed;
-    bottom: 0;
-    
-}
 
 #btn-container{
     display: flex;
@@ -91,4 +84,56 @@ body{
     cursor: pointer;
     font-weight: bold;
     background-color: antiquewhite;
+    margin: 2px;
+}
+
+.task-complete-btn{
+    border-style: solid;
+    margin: 2px;
+    outline: none;
+    size: 25px;
+    border-radius: 3.5px;
+    color: darkgreen;
+    border-color: darkgreen;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: antiquewhite;
+}
+
+#footer{
+    position: fixed;
+    bottom: 0;
+    width: 95%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+#reset-task-btn{
+    margin: 3px;
+    color: blue;
+    border-color: black;
+    background-color: antiquewhite;
+    font-weight: bold;
+    border-style: solid;
+    border-radius: 3.5px;
+    cursor: pointer;
+    outline: 0;
+    font-size: 9px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+#cur-time{
+    font-weight: normal;
+    font-size: 12px;
+    display: inline-block;
+}
+
+#task-complete-container {
+    display: inline-block;
+}
+
+#task-complete-container  > * {
+    display: inline-block;
+    vertical-align: middle;
 }

@@ -180,7 +180,7 @@ function addCompletedTask(){
 const resetTaskBtn = document.getElementById("reset-task-btn")
 resetTaskBtn.addEventListener("click", ()=>{
     chrome.storage.sync.set({
-        taskCount: taskCount,
+        taskCount: 0,
     },()=>{
         renderCompletedTaskCount(0)
     })
