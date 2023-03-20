@@ -160,7 +160,7 @@ chrome.storage.sync.get(["taskCount"], (res)=>{
 })
 
 function renderCompletedTaskCount(taskCount){
-    taskCompleted.textContent = `Tasks completed: ${taskCount}` 
+    taskCompleted.textContent = `${taskCount}` 
 
 }
 

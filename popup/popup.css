@@ -137,3 +137,7 @@ body{
     display: inline-block;
     vertical-align: middle;
 }
+
+#cur-task-completed{
+    color: darkgreen;
+}
