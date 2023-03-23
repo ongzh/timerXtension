@@ -20,7 +20,7 @@ This Xtension will help you focus for Xtended amount of time.
 * Navigate to chrome://extensions on your local chrome browser
 * Enable Developer mode
 * Click on load unpacked and select the folder you cloned.
-
+* Turn on chrome notifications for notifications to work properly (optional)
 
 
 
