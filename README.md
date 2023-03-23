@@ -1,5 +1,5 @@
 # timerXtension
-Custom pomodoro focus timer! Chrome extension built using vanilla JS.
+Custom pomodoro focus timer! Chrome extension built using vanilla JS (my first time).
 <br>
 This Xtension will help you focus for Xtended amount of time.
 
